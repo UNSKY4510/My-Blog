@@ -43,18 +43,7 @@ public class CommentController {
      * @author: UNSKY
      * @date: 2022/5/19
      */
-    @PostMapping(value = "/comments/checkDone")
-    @ResponseBody
-    public Result checkDone(@RequestBody Integer[] ids){
-        if (ids.length < 1){
-            return ResultGenerator.genFailResult("参数异常！");
-        }
-        if (commentService.checkDone(ids)){
-            return ResultGenerator.genSuccessResult();
-        }else {
-            return ResultGenerator.genFailResult("审核失败！");
-        }
-    }
+
 
     /**
     * @Description: 评论删除

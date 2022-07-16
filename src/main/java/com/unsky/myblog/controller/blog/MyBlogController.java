@@ -95,6 +95,8 @@ public class MyBlogController {
         if (blogDetailVO != null) {
             request.setAttribute("blogDetailVO", blogDetailVO);
             request.setAttribute("commentPageResult", commentService.getCommentPageByBlogIdAndPageNum(blogId, commentPage));
+        }else {
+            return "error/error_404";
         }
         request.setAttribute("pageName", "详情");
         request.setAttribute("configurations", configService.getAllConfigs());

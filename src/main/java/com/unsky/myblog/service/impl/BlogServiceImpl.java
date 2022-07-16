@@ -205,6 +205,9 @@ public class BlogServiceImpl implements BlogService {
         params.put("blogStatus", 1);//过滤发布状态下的数据
         PageQueryUtil pageUtil = new PageQueryUtil(params);
         List<Blog> blogList = blogMapper.findBlogList(pageUtil);
+        if (CollectionUtils.isEmpty(blogList)){
+            return null;
+        }
         List<BlogListVO> blogListVOS = getBlogListVOsByBlogs(blogList);
         int total = blogMapper.getTotalBlogs(pageUtil);
         PageResult pageResult = new PageResult(blogListVOS, total, pageUtil.getLimit(), pageUtil.getPage());
@@ -304,6 +307,9 @@ public class BlogServiceImpl implements BlogService {
             param.put("blogStatus", 1);//过滤发布状态下的数据
             PageQueryUtil pageUtil = new PageQueryUtil(param);
             List<Blog> blogList = blogMapper.findBlogList(pageUtil);
+            if (CollectionUtils.isEmpty(blogList)){
+                return null;
+            }
             List<BlogListVO> blogListVOS = getBlogListVOsByBlogs(blogList);
             int total = blogMapper.getTotalBlogs(pageUtil);
             PageResult pageResult = new PageResult(blogListVOS, total, pageUtil.getLimit(), pageUtil.getPage());
